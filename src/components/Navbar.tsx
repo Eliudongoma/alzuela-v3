@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function NavBar( ) {
   
   return (
-   <Box bg={'blue.800'} h={7}>
+   <Box bg={'blue.800'} h={7} mt={'50px'}>
       <Flex color={'white'} mx={'auto'} justify={'center'} maxW={'80vw'}>
           <Text >
             <Link to={'/'}>Hair Product</Link>
