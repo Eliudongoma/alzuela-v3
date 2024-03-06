@@ -1,17 +1,34 @@
-import { Box, Flex, Text } from '@chakra-ui/react'
+import { Box, Flex, Text,Spacer } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 
-function NavBar( {categories}:{categories: object}) {
+function NavBar( ) {
   
   return (
-   <Box bg={'blue.800'} h={5}>
-      <Flex>
-        {categories.map((category) => (
-          <Text key={'10'}>
-            <Link to={'/'}>{category}</Link>
+   <Box bg={'blue.800'} h={7}>
+      <Flex color={'white'} mx={'auto'} justify={'center'} maxW={'80vw'}>
+          <Text >
+            <Link to={'/'}>Hair Product</Link>
           </Text>
-        ))}
-        
+          <Spacer w={1}/>
+          <Text>
+            <Link to={'/'}>Face Products</Link>
+          </Text>
+          <Spacer w={1}/>
+          <Text>
+            <Link to={'/'}>Skin Care</Link>
+          </Text>
+          <Spacer w={1}/>
+          <Text>
+            <Link to={'/'}>Shower Gel</Link>
+          </Text>
+          <Spacer w={1}/>
+          <Text>
+            <Link to={'/'}>Shower Gel</Link>
+          </Text>
+          <Spacer w={1}/>
+          <Text>
+            <Link to={'/'}>Shower Gel</Link>
+          </Text>
       </Flex>
    </Box>
   )
