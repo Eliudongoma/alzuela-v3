@@ -10,7 +10,7 @@ function App() {
     <>
       <Header />
       {/* The header is fixed, meaning other elements will still be under it. We have to give top space for all of them to be shown */}
-      <Box pt="3.6rem">
+      <Box pt="4rem">
         <NavBar />
         <Routes>
           <Route path="/" element={<HomePage />} />

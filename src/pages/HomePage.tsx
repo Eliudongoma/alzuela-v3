@@ -1,7 +1,8 @@
-import { Box, Grid, GridItem } from "@chakra-ui/react";
+import { GridItem } from "@chakra-ui/react";
 
-import productImage from "../assets/product.jpg";
+import { Grid } from "../components/common";
 import ProductCard, { Product } from "../components/ProductCard";
+import productImage from "../assets/product.jpg";
 
 const products: Product[] = [
   {
@@ -43,21 +44,13 @@ const products: Product[] = [
 
 function HomePage() {
   return (
-    <Box>
-      <Grid
-        templateColumns="repeat(4, 1fr)"
-        gap={4}
-        mx={"auto"}
-        my={5}
-        maxW={"80vw"}
-      >
-        {products.map((product, index) => (
-          <GridItem bg={"blue.50"} key={index}>
-            <ProductCard {...product} />
-          </GridItem>
-        ))}
-      </Grid>
-    </Box>
+    <Grid columns={{ base: 1, md: 3, lg: 4 }} gap={4} px={5}>
+      {products.map((product, index) => (
+        <GridItem bg="blue.50" key={index} borderRadius={16} overflow="hidden">
+          <ProductCard {...product} />
+        </GridItem>
+      ))}
+    </Grid>
   );
 }
 

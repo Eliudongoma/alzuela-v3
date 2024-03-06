@@ -21,13 +21,7 @@ export interface Product {
 
 const ProductCard = ({ description, name, image, price }: Product) => {
   return (
-    <Card
-      cursor="pointer"
-      datatype="Card"
-      bg="blue.50"
-      borderRadius={20}
-      overflow="hidden"
-    >
+    <Card cursor="pointer" datatype="Card" bg="blue.50">
       <CardHeader>
         <Image
           src={image}
@@ -39,9 +33,9 @@ const ProductCard = ({ description, name, image, price }: Product) => {
       </CardHeader>
       <CardBody datatype="CardBody">
         <Stack datatype="Stack">
-          <Heading datatype="Heading" size={"md"}>
+          <Text fontSize={20} textAlign="center">
             {name}
-          </Heading>
+          </Text>
           <Text fontSize={13}>{description}</Text>
           <Heading fontSize={13}>Ksh {price}</Heading>
         </Stack>

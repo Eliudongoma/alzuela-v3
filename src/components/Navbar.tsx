@@ -26,6 +26,7 @@ function NavBar() {
           p={2}
           key={index}
           onClick={() => navigate(item.route)}
+          letterSpacing={0.1}
         >
           {item.label}
         </Text>
