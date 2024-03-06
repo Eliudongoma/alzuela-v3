@@ -1,37 +1,37 @@
-import { Box, Flex, Text,Spacer } from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
+import { Flex, Text } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
-function NavBar( ) {
-  
-  return (
-   <Box bg={'blue.800'} h={7} mt={'50px'}>
-      <Flex color={'white'} mx={'auto'} justify={'center'} maxW={'80vw'}>
-          <Text >
-            <Link to={'/'}>Hair Product</Link>
-          </Text>
-          <Spacer w={1}/>
-          <Text>
-            <Link to={'/'}>Face Products</Link>
-          </Text>
-          <Spacer w={1}/>
-          <Text>
-            <Link to={'/'}>Skin Care</Link>
-          </Text>
-          <Spacer w={1}/>
-          <Text>
-            <Link to={'/'}>Shower Gel</Link>
-          </Text>
-          <Spacer w={1}/>
-          <Text>
-            <Link to={'/'}>Shower Gel</Link>
-          </Text>
-          <Spacer w={1}/>
-          <Text>
-            <Link to={'/'}>Shower Gel</Link>
-          </Text>
-      </Flex>
-   </Box>
-  )
+interface Item {
+  route: string;
+  label: string;
 }
 
-export default NavBar
+const data: Item[] = [
+  { label: "Hair Product", route: "/" },
+  { label: "Face Products", route: "/" },
+  { label: "Skin Care", route: "/" },
+  { label: "Shower Gel", route: "/" },
+  { label: "Hair Product", route: "/" },
+];
+
+function NavBar() {
+  const navigate = useNavigate();
+
+  return (
+    <Flex bg="blue.800" p={2} color="whiteAlpha.700" mx="auto" justify="center">
+      {data.map((item, index) => (
+        <Text
+          _hover={{ color: "whiteAlpha.900" }}
+          cursor="pointer"
+          p={2}
+          key={index}
+          onClick={() => navigate(item.route)}
+        >
+          {item.label}
+        </Text>
+      ))}
+    </Flex>
+  );
+}
+
+export default NavBar;

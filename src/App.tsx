@@ -1,27 +1,26 @@
-import { Routes, BrowserRouter, Route } from 'react-router-dom'
-import Header from './components/Header'
-import Home from './pages/Home'
-import NavBar from './components/Navbar'
-import Footer from './components/Footer'
-import Info from './components/Info'
+import { Box } from "@chakra-ui/react";
+import { Routes, Route } from "react-router-dom";
+
+import { HomePage } from "./pages";
+import { Header, Footer, Info, NavBar } from "./components";
 //import Categories from './assets/Categories.json'
 
 function App() {
-  //const [count, setCount] = useState(0)
-
   return (
     <>
-     <BrowserRouter>
-        <Header />
+      <Header />
+      {/* The header is fixed, meaning other elements will still be under it. We have to give top space for all of them to be shown */}
+      <Box pt="3.6rem">
         <NavBar />
-        <Routes>       
-          <Route path='/'element={ <Home />}/>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
         </Routes>
-        <Info/>
-        <Footer/>
-      </BrowserRouter>
+      </Box>
+
+      <Info />
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
