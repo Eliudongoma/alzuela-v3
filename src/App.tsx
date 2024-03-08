@@ -1,25 +1,22 @@
-import { Routes, BrowserRouter, Route } from 'react-router-dom'
-import Header from './components/Header'
-import Home from './pages/Home'
-import NavBar from './components/Navbar'
-import Footer from './components/Footer'
-import Info from './components/Info'
-//import Categories from './assets/Categories.json'
+import { Routes, Route } from 'react-router-dom'
+import { Header, Navbar, Footer, Info } from './components'
+import { HomePage, About } from './pages'
+import { Box } from '@chakra-ui/react'
 
 function App() {
-  //const [count, setCount] = useState(0)
 
   return (
     <>
-     <BrowserRouter>
-        <Header />
-        <NavBar />
+      <Header />
+      <Box>
+        <Navbar />
         <Routes>       
-          <Route path='/'element={ <Home />}/>
+          <Route path='/'element={ <HomePage />}/>
+          <Route path='/about'element={ <About />}/>
         </Routes>
-        <Info/>
-        <Footer/>
-      </BrowserRouter>
+      </Box>      
+      <Info/>
+      <Footer/>
     </>
   )
 }
