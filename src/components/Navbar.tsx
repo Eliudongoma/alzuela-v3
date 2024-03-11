@@ -2,7 +2,7 @@
 import { Flex, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import Humburger from './Humburger';
+import Humburger from "./Humburger";
 export interface Item {
   route: string;
   label: string;
@@ -27,7 +27,7 @@ function NavBar() {
   }, []);
   return (
     <>
-      {navVisible && (
+      {(navVisible && (
         <Flex
           bg={"blue.700"}
           mt={"12vh"}
@@ -50,12 +50,18 @@ function NavBar() {
               {item.label}
             </Text>
           ))}
-          {/* </Flex> ||
-       <Flex bg={'blue.700'} mt={'12vh'} h={12} color={'whiteAlpha.700'} mx={'auto'} justify={'center'} align={'center'}>
-       {data.map((item, index) => (
-         <Humburger>
-
-       </Humburger>*/}
+        </Flex>
+      )) || (
+        <Flex
+          bg={"blue.700"}
+          mt={"12vh"}
+          h={12}
+          color={"whiteAlpha.700"}
+          mx={"auto"}
+          justify={"left"}
+          align={"center"}
+        >
+          <Humburger />
         </Flex>
       )}
     </>
