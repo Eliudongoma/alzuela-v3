@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
-import { Header, Navbar, Footer, Info } from './components'
-import { HomePage, About } from './pages'
+import { Header } from './components'
+import { HomePage, About, SignIn, SignUp } from './pages'
 import { Box } from '@chakra-ui/react'
 
 function App() {
@@ -9,14 +9,14 @@ function App() {
     <>
       <Header />
       <Box>
-        <Navbar />
         <Routes>       
           <Route path='/'element={ <HomePage />}/>
           <Route path='/about'element={ <About />}/>
+          <Route path='/signin'element={ <SignIn />}/>
+          <Route path='/signup'element={ <SignUp />}/>
         </Routes>
       </Box>      
-      <Info/>
-      <Footer/>
+      
     </>
   )
 }
