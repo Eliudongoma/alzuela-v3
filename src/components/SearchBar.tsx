@@ -1,5 +1,5 @@
 import { SearchIcon, CloseIcon } from "@chakra-ui/icons";
-import { Box, FormControl, InputGroup, InputLeftElement, Input, InputRightElement  } from "@chakra-ui/react";
+import { Box, FormControl, InputGroup, InputLeftElement, Input, InputRightElement } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 
 function SearchBar() {
