@@ -3,7 +3,6 @@ import {
   CardBody,
   Stack,
   Text,
-  Heading,
   CardFooter,
   Image,
   CardHeader,
@@ -25,7 +24,7 @@ const ProductCard = ({ description, name, image, price }: Product) => {
       <CardHeader>
         <Image
           src={image}
-          alt="Loading"
+          alt={name}
           bg="blue.50"
           border={1}
           borderRadius={9}
@@ -37,7 +36,7 @@ const ProductCard = ({ description, name, image, price }: Product) => {
             {name}
           </Text>
           <Text fontSize={13}>{description}</Text>
-          <Heading fontSize={13}>Ksh {price}</Heading>
+          <Text fontSize={13}>Ksh {price}</Text>
         </Stack>
       </CardBody>
       <CardFooter justify="center">{AddToCart()}</CardFooter>
