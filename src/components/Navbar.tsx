@@ -1,45 +1,29 @@
-// import { HamburgerIcon } from '@chakra-ui/icons';
-import { Flex, Text} from '@chakra-ui/react'
-import { useEffect, useState } from 'react';
+import { Flex, Text, useBreakpointValue} from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom';
 import Humburger from './Humburger';
-export interface Item{
-  route: string;
-  label: string;
-}
-const data: Item[] = [
-  { label: "Hair Product", route: "/" },
-  { label: "Face Product", route: "/" },
-  { label: "Skin Care", route: "/" },
-  { label: "Shower Gel", route: "/" },
-  { label: "Body Wash", route: "/" },
-];
+import  SearchBar  from './SearchBar';
+import { data } from '../data/Category';
 
 function NavBar( ) {
   const navigate = useNavigate();
-  const [navVisible, setNavVisible] = useState(true);
+  const isSmallScreen = useBreakpointValue({ base: true, md: false });
 
-  useEffect(() => {
-    const handleResize = () => setNavVisible(window.innerWidth > 650);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);   
-  }, [])
   return (
-    <>
-      {navVisible && 
-        <Flex bg={'blue.700'} mt={'12vh'} h={12} color={'whiteAlpha.700'} mx={'auto'} justify={'center'} align={'center'}>
-        {data.map((item, index) => (
-          <Text _hover={{color:"whiteAlpha.700"}} cursor={'pointer'} p={2} fontSize={20}
-            key={index} onClick={() => navigate(item.route)} letterSpacing={0.1}
-          >{item.label}</Text>
-        ))}
-       </Flex> || 
-       <Flex bg={'blue.700'} mt={'12vh'} h={12} color={'whiteAlpha.700'} mx={'auto'} justify={'left'} align={'center'}>      
-         <Humburger/>
-         </Flex>  
-      }
-    </>
+    <Flex bg={'blue.700'} mt={'70px'} h={12} color={'whiteAlpha.700'} mx={'auto'} justify={isSmallScreen ? 'left' : "center"} align={'center'} w={'100%'}>        
+      {isSmallScreen ? (
+      <>
+        <Humburger />
+        <SearchBar searchvisible={!isSmallScreen} />
+      </>
+    ) : (data.map((item, index) => (
+        <Text _hover={{ color: "whiteAlpha.700" }} cursor={'pointer'} p={2} fontSize={20} key={index} onClick={() => navigate(item.route)} letterSpacing={0.1}>
+          {item.label}
+        </Text>
+      )))}
+  </Flex>        
   )
 }
 
 export default NavBar
+
+

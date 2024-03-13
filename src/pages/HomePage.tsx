@@ -2,9 +2,10 @@ import { GridItem } from "@chakra-ui/react"
 import Grid  from "../components/common/Grid"
 import productImage from "../assets/product.jpg"
 import productImage2 from '../assets/product2.webp'
-import ProductCard, { Product } from "../components/ProductCard"
+import ProductCard  from "../components/ProductCard"
 import NavBar from "../components/Navbar"
 import { Footer, Info } from "../components"
+import { Product } from "../components/interfaces/Product"
 
 const products: Product[] = [
   {

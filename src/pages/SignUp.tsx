@@ -1,23 +1,15 @@
 import { Box, Button, Flex, FormControl, FormLabel, Heading, Input} from "@chakra-ui/react"
 import { useState } from "react"
 import { Link } from "react-router-dom";
+import { UserSignUp } from "../components/interfaces/UserSignUp";
 
-export interface UserLogin{
-  username: "";
-  password: "";
-  address: "";
-  phone:"";
-  firstname:"";
-  lastname:"";
-  email:"";
-}
 
 function SignIn() {
-  const [credentials, setCredentials] = useState<UserLogin>({
+  const [credentials, setCredentials] = useState<UserSignUp>({
     username: "",
     password: "",
     address: "",
-    phone:"",
+    phone: "",
     firstname:"",
     lastname:"",
     email:""
@@ -35,7 +27,7 @@ function SignIn() {
       username:"",
       password:"",
       address: "",
-      phone:"",
+      phone: "",
       firstname:"",
       lastname:"",
       email:""
@@ -43,7 +35,7 @@ function SignIn() {
   }
   return (
     <>
-    <Flex justify={'center'} align={'center'} mt={'90px'}>
+    <Flex justify={'center'} align={'center'} mt={'90px'} zIndex={1000}>
       <Box border={"1px"} borderRadius={"10px"} borderColor={'grey.200'} w={'500px'} alignItems={"center"} justifyItems={'center'}
         padding={6} boxShadow={'lg'} bg={'gray.50'} h={'485px'}>
         <Heading mb={3}>Sign Up</Heading>
@@ -53,7 +45,7 @@ function SignIn() {
               <FormLabel fontSize={16}>Username</FormLabel>
               <Input type="text" value={credentials.firstname} name="firstname" placeholder="First name" fontSize={16} onChange={handleChange}></Input>
             </FormControl>
-            <FormControl id="username" mb={2}>
+            <FormControl id="lastname" mb={2}>
               <FormLabel fontSize={16}>Username</FormLabel>
               <Input type="text" value={credentials.lastname} name="lastname" placeholder="Last name" fontSize={16} onChange={handleChange}></Input>
            </FormControl>

@@ -1,11 +1,7 @@
 import { Box, Button, Flex, FormControl, FormLabel, Heading, Input, Text } from "@chakra-ui/react"
 import { useState } from "react"
 import { Link } from "react-router-dom";
-
-export interface UserLogin{
-  username: "";
-  password: "";
-}
+import { UserLogin } from "../components/interfaces/UserLogin";
 
 function SignIn() {
 
@@ -51,10 +47,7 @@ function SignIn() {
               <Text _hover={{textDecoration:'underline'}} fontSize={18}>Forgot Password?</Text></Link>
             <Link to={'/signup'}> 
               <Text _hover={{textDecoration:'underline'}} fontSize={18}>Create an account!</Text></Link>
-          </Flex>
-          
-
-          
+          </Flex>       
         </form>
       </Box>
     </Flex>

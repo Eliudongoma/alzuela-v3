@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Info() {
   return (
-    <Box bg={'blue.100'} h={'30vh'} w={'100%'} >
+    <Box bg={'blue.100'} h={'20vh'} w={'100%'} >
       <Flex justify={'center'} mx={'auto'} maxW={'70vw'} py={4}>
         <Box px={5}>
           <Heading fontSize={15}>Contact Information</Heading>

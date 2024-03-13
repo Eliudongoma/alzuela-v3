@@ -1,49 +1,33 @@
-import { HamburgerIcon } from '@chakra-ui/icons';
-import { IconButton, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, VStack, Button,  } from '@chakra-ui/react';
+import { Menu, MenuButton, MenuList, MenuItem, VStack, Button, Text,  } from '@chakra-ui/react';
 import { useState } from 'react';
+import {  HamburgerIcon } from '@chakra-ui/icons';
+import { data } from '../data/Category';
+import { useNavigate } from 'react-router-dom';
 
-export interface Item{
-  route: string;
-  label: string;
-}
-const data: Item[] = [
-  { label: "Hair Product", route: "/" },
-  { label: "Face Product", route: "/" },
-  { label: "Skin Care", route: "/" },
-  { label: "Shower Gel", route: "/" },
-  { label: "Body Wash", route: "/" },
-];
 function Humburger() {
-  
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-  const toggleDrawer = () => setIsOpen(!isOpen);
+  const toggleMenu = () => setIsOpen(!isOpen);
   
   return (
     <>
-      <IconButton 
-        icon={<HamburgerIcon/>}
-        aria-label='Open Menu'
-        colorScheme='blue'
-        onClick={toggleDrawer}/>       
-
-        <Drawer isOpen={isOpen} onClose={toggleDrawer} placement='left' size={'xs'} >
-          <DrawerOverlay/>
-          <DrawerContent opacity={20}>
-            <DrawerCloseButton/>
-            <DrawerHeader>Select categories</DrawerHeader>
-            <DrawerBody alignItems={'center'}>
-              <VStack spacing={1}>
-                {data.map((item, index) => (
-                  <Button key={index} variant="ghost"  _hover={{textDecoration: 'underline', bg: 'blue.50'}}>
-                    {item.label}
-                  </Button>))}                
-              </VStack>
-            </DrawerBody>
-          </DrawerContent>
-        </Drawer>
-
+      <Menu>
+        <MenuButton as={Button} leftIcon={<HamburgerIcon />} 
+            onClick={toggleMenu} w={10} bg={'blue.400'}>        
+        </MenuButton>
+        <MenuList bg={'blue.400'} color={'black'} p={2}>
+          <VStack spacing={1}>
+            <Text>Select a category</Text>
+            {data.map((item, index) => (
+              <MenuItem key={index} onClick={() => navigate(item.route)} bg={'blue.400'} 
+                _hover={{ textDecoration: 'underline', bg: 'blue.50' }}>
+                {item.label}
+              </MenuItem>
+            ))}
+          </VStack>
+        </MenuList>
+      </Menu>
     </>
-    
   )
 }
 
