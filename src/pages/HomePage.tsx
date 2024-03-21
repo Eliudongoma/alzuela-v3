@@ -58,12 +58,13 @@ const products: Product[] = [
     price: 200,
   },
 ];
+// sm -> is the normal size phone screen, base -> are the smallest phones
 function HomePage() {
   return (
     <>
       <NavBar />
 
-      <Grid column={{ base: 1, sm: 2, md: 3, lg: 4 }} gap={4} px={5}>
+      <Grid column={{ base: 1, md: 3, lg: 4 }} gap={4} px={5}>
         {products.map((product, index) => (
           <GridItem key={index} borderRadius={16} overflow={"hidden"}>
             <ProductCard {...product} />
