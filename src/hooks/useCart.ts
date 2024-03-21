@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { CartContext } from "../contexts";
 import { figure } from "../utils";
 import { Product } from "../components/interfaces/Product";
-import useProducts from "./useProducts";
+import { useProducts } from ".";
 
 export interface CartProduct extends Product {
   quantity: number;

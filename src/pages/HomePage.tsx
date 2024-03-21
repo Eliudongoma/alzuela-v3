@@ -1,65 +1,14 @@
 import { GridItem } from "@chakra-ui/react";
-import Grid from "../components/common/Grid";
-import productImage from "../assets/product.jpg";
-import productImage2 from "../assets/product2.webp";
-import ProductCard from "../components/ProductCard";
-import NavBar from "../components/Navbar";
-import { Footer, Info } from "../components";
-import { Product } from "../components/interfaces/Product";
 
-const products: Product[] = [
-  {
-    _id: 1,
-    description: "A premium product with profound results in a global scale!!",
-    name: "Shower Gel",
-    image: productImage,
-    price: 200,
-  },
-  {
-    _id: 2,
-    description: "A premium product with profound results in a global scale!!",
-    name: "Shower Gel",
-    image: productImage2,
-    price: 200,
-  },
-  {
-    _id: 3,
-    description: "A premium product with profound results in a global scale!!",
-    name: "Shower Gel",
-    image: productImage,
-    price: 200,
-  },
-  {
-    _id: 4,
-    description: "A premium product with profound results in a global scale!!",
-    name: "Shower Gel",
-    image: productImage2,
-    price: 200,
-  },
-  {
-    _id: 5,
-    description: "A premium product with profound results in a global scale!!",
-    name: "Shower Gel",
-    image: productImage,
-    price: 200,
-  },
-  {
-    _id: 6,
-    description: "A premium product with profound results in a global scale!!",
-    name: "Shower Gel",
-    image: productImage,
-    price: 200,
-  },
-  {
-    _id: 7,
-    description: "A premium product with profound results in a global scale!!",
-    name: "Shower Gel",
-    image: productImage,
-    price: 200,
-  },
-];
-// sm -> is the normal size phone screen, base -> are the smallest phones
+import { Footer, Info } from "../components";
+import { useProducts } from "../hooks";
+import Grid from "../components/common/Grid";
+import NavBar from "../components/Navbar";
+import ProductCard from "../components/ProductCard";
+
 function HomePage() {
+  const { products } = useProducts();
+  // sm -> is the normal size phone screen, base -> are the smallest phones
   return (
     <>
       <NavBar />
@@ -71,7 +20,9 @@ function HomePage() {
           </GridItem>
         ))}
       </Grid>
+
       <Info />
+
       <Footer />
     </>
   );
