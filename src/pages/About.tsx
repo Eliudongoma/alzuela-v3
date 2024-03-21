@@ -1,8 +1,11 @@
-import { Heading } from "@chakra-ui/react"
+import { Box, Heading } from "@chakra-ui/react"
 
 function About() {
   return (
-    <Heading>About Alzuela</Heading>
+    <Box h={'100vh'} mt={'72px'}>
+      <Heading>About Alzuela</Heading>
+
+    </Box>
   )
 }
 

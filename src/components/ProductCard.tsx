@@ -8,15 +8,8 @@ import {
   Heading,
   Flex,
 } from "@chakra-ui/react";
-import AddToCart from "./AddToCart";
-
-export interface Product {
-  _id: string | number;
-  image: string;
-  name: string;
-  description: string;
-  price: number;
-}
+import AddToCart from "./CartButton";
+import { Product } from "./interfaces/Product";
 
 const ProductCard = ({ name, description, image, price }: Product) => {
   return (
@@ -28,7 +21,7 @@ const ProductCard = ({ name, description, image, price }: Product) => {
             alt="Loading"
             border={1}
             borderRadius={18}
-            h={"35vh"}
+            h={"260px"}
             w={"100%"}
             objectFit={"contain"}
             _hover={{

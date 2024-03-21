@@ -2,7 +2,10 @@ import { GridItem } from "@chakra-ui/react";
 import Grid from "../components/common/Grid";
 import productImage from "../assets/product.jpg";
 import productImage2 from "../assets/product2.webp";
-import ProductCard, { Product } from "../components/ProductCard";
+import ProductCard from "../components/ProductCard";
+import NavBar from "../components/Navbar";
+import { Footer, Info } from "../components";
+import { Product } from "../components/interfaces/Product";
 
 const products: Product[] = [
   {
@@ -57,13 +60,19 @@ const products: Product[] = [
 ];
 function HomePage() {
   return (
-    <Grid column={{ base: 1, sm: 2, md: 3, lg: 4 }} gap={4} px={5}>
-      {products.map((product, index) => (
-        <GridItem key={index} borderRadius={16} overflow={"hidden"}>
-          <ProductCard {...product} />
-        </GridItem>
-      ))}
-    </Grid>
+    <>
+      <NavBar />
+
+      <Grid column={{ base: 1, sm: 2, md: 3, lg: 4 }} gap={4} px={5}>
+        {products.map((product, index) => (
+          <GridItem key={index} borderRadius={16} overflow={"hidden"}>
+            <ProductCard {...product} />
+          </GridItem>
+        ))}
+      </Grid>
+      <Info />
+      <Footer />
+    </>
   );
 }
 

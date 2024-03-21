@@ -1,21 +1,22 @@
 import { Routes, Route } from "react-router-dom";
-import { Header, Navbar, Footer, Info } from "./components";
-import { HomePage, About } from "./pages";
+import { Header } from "./components";
+import { HomePage, About, SignIn, SignUp } from "./pages";
 import { Box } from "@chakra-ui/react";
+import AddToCart from "./pages/AddToCart";
 
 function App() {
   return (
     <>
-      <Header />
+      <Header cartCount={0} />
       <Box>
-        <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<About />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/addtocart" element={<AddToCart />} />
         </Routes>
       </Box>
-      <Info />
-      <Footer />
     </>
   );
 }
