@@ -1,8 +1,9 @@
 import { Flex, Text, useBreakpointValue } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+
+import { categories } from "../data/categories";
 import Humburger from "./Humburger";
 import SearchBar from "./SearchBar";
-import { data } from "../data/Category";
 
 function NavBar() {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ function NavBar() {
           <SearchBar searchvisible={!isSmallScreen} />
         </>
       ) : (
-        data.map((item, index) => (
+        categories.map((item, index) => (
           <Text
             _hover={{ color: "whiteAlpha.700" }}
             cursor={"pointer"}

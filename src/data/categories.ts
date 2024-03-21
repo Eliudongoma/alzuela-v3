@@ -1,10 +1,9 @@
-import { Category } from '../components/interfaces/Category';
+import { Category } from "../components/interfaces/Category";
 
-export const data: Category[] = [
+export const categories: Category[] = [
   { label: "Hair Product", route: "/" },
   { label: "Face Product", route: "/" },
   { label: "Skin Care", route: "/" },
   { label: "Shower Gel", route: "/" },
   { label: "Body Wash", route: "/" },
 ];
-
