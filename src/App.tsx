@@ -1,8 +1,14 @@
-import { Routes, Route } from "react-router-dom";
-import { Header } from "./components";
-import { HomePage, About, SignIn, SignUp } from "./pages";
 import { Box } from "@chakra-ui/react";
-import AddToCart from "./pages/AddToCart";
+import { Routes, Route } from "react-router-dom";
+
+import { Header } from "./components";
+import {
+  AddToCartPage,
+  HomePage,
+  AboutPage,
+  SignInPage,
+  SignUpPage,
+} from "./pages";
 
 function App() {
   return (
@@ -11,10 +17,10 @@ function App() {
       <Box>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/addtocart" element={<AddToCart />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/signin" element={<SignInPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/addtocart" element={<AddToCartPage />} />
         </Routes>
       </Box>
     </>

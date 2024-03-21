@@ -1,4 +1,5 @@
+export { default as AboutPage } from "./AboutPage";
+export { default as AddToCartPage } from "./AddToCartPage";
 export { default as HomePage } from "./HomePage";
-export { default as About } from "./About";
-export { default as SignIn } from "./SignIn";
-export { default as SignUp } from "./SignUp";
+export { default as SignInPage } from "./SignInPage";
+export { default as SignUpPage } from "./SignUpPage";
