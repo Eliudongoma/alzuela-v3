@@ -38,13 +38,7 @@ const ProductCard = ({ _id, name, description, image, price }: Product) => {
           />
         </Flex>
       </CardHeader>
-      <CardBody
-        bg="gray.700"
-        pb={4}
-        pos="absolute"
-        bottom={0}
-        // borderBottomRadius={12}
-      >
+      <CardBody bg="gray.700" pb={4} pos="absolute" bottom={0}>
         <Stack>
           <Heading fontSize={20} textAlign={"center"}>
             {name}
