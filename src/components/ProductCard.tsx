@@ -14,7 +14,7 @@ import CartButton from "./CartButton";
 
 const ProductCard = ({ _id, name, description, image, price }: Product) => {
   return (
-    <Card cursor={"pointer"} datatype="Card" bg={"blue.50"}>
+    <Card cursor={"pointer"} datatype="Card" bg={"blue.50"} pos="relative">
       <CardHeader h={"60%"} width={"100%"} p={0}>
         <Flex align={"center"} justify={"center"}>
           <Image
@@ -32,7 +32,13 @@ const ProductCard = ({ _id, name, description, image, price }: Product) => {
           />
         </Flex>
       </CardHeader>
-      <CardBody bg="gray.700" pb={4}>
+      <CardBody
+        bg="gray.700"
+        pb={4}
+        pos="absolute"
+        bottom={0}
+        borderBottomRadius={12}
+      >
         <Stack>
           <Heading fontSize={20} textAlign={"center"}>
             {name}
