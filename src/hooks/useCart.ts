@@ -25,7 +25,7 @@ const useCart = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [count, results.length]);
 
-  const addToCart = (productId: string) => {
+  const addToCart = (productId: string | number) => {
     const { count, ids } = { ...context.cartProducts };
 
     if (hasProductInCart(productId)) return;
@@ -34,7 +34,7 @@ const useCart = () => {
     context.setCartProducts({ count: count + 1, ids });
   };
 
-  const removeFromCart = (productId: string) => {
+  const removeFromCart = (productId: string | number) => {
     const { count, ids } = { ...context.cartProducts };
 
     if (!hasProductInCart(productId)) return;
