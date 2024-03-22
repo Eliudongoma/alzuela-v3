@@ -24,7 +24,7 @@ function SignIn() {
     })
   }
   return (
-    <Flex justify={'center'} align={'center'} mt={'160px'}>
+    <Flex justify={'center'} align={'center'} mt={'160px'} >
       <Box border={"1px"} borderRadius={"10px"} borderColor={'grey.200'} w={'400px'} alignItems={"center"} justifyItems={'center'}
         padding={6} boxShadow={'lg'} bg={'gray.50'} h={'380px'}>
         <Heading mb={3}>Login</Heading>

@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Header />
-      <Box>
+      <Box bg={'gray.50'} px={12} >
         <Routes>       
           <Route path='/'element={ <HomePage />}/>
           <Route path='/about'element={ <About />}/>

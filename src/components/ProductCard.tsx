@@ -1,10 +1,10 @@
-import { Card, CardBody, CardHeader, Image, Stack, Text, Heading, Flex} from "@chakra-ui/react";
-import AddToCart from "./CartButton";
+import { Image,  Heading, Flex, Card, CardHeader, CardBody, Stack, } from "@chakra-ui/react";
 import { Product } from "./interfaces/Product";
+import AddToCart from "../pages/AddToCart";
 
-const ProductCard = ({ name, description, image, price }: Product) => {
-  return (
-    <Card cursor={'pointer'} datatype="Card" bg={'blue.50'} h={'75vh'} >
+const ProductCard = ({ name, image, price }: Product) => {
+  return (      
+    <Card cursor={'pointer'} datatype="Card" bg={'blue.50'} >
       <CardHeader h={'60%'} width={'100%'} p={0}>
         <Flex align={'center'} justify={'center'}>
           <Image src={image} alt="Loading" border={1} borderRadius={18} h={'260px'} w={'100%'} objectFit={'contain'}
@@ -14,7 +14,6 @@ const ProductCard = ({ name, description, image, price }: Product) => {
       <CardBody datatype="CardBody">
         <Stack datatype="Stack">
           <Heading fontSize={20} textAlign={'center'}>{name}</Heading>
-          <Text fontSize={16} noOfLines={2}>{description}</Text>
           <Heading fontSize={16}>Ksh{price}</Heading>
         </Stack>
         <Flex justify={'center'} align={'center'}>

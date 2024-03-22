@@ -1,10 +1,10 @@
-import { Box, Flex, Image, Text, Button, Icon } from '@chakra-ui/react';
-import { FaShoppingCart } from 'react-icons/fa';
+import { Box, Flex, Image, Button } from '@chakra-ui/react';
 import Logo from '../assets/logo1.svg'; 
 import { Link } from 'react-router-dom';
 import { SearchBar } from '.';
+import CartIcon from './CartIcon';
 
-function Header({cartCount}: {cartCount: number}) {
+function Header() {
   return (
     <Box bg='blue.900' h={"70px"} w={'100%'} top={0} right={0} left={0} zIndex={999} position={'fixed'}>
       <Flex align={'center'} justify={'space-between'} w={'100%'} h={'100%'}>
@@ -19,12 +19,7 @@ function Header({cartCount}: {cartCount: number}) {
             Signin/Register
           </Button>
         </Link> 
-          <Box> 
-            <Link  to={'/addtocart'}><Icon as={FaShoppingCart} color={'white'} px={2} h={'auto'} w={'auto'} boxSize={10} _hover={{cursor:'pointer'}}/></Link>
-            <Text 
-              bg={'blue.300'} color={'white'} w={6} h={6} align={'center'} border={14} borderRadius={18} position={'fixed'} mt={'-14'} ml={'6'}
-            >{cartCount}</Text>
-          </Box>
+        <CartIcon/>
         </Box>
       </Flex>
     </Box>    
