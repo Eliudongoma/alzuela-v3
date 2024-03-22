@@ -1,6 +1,4 @@
-export interface Category{
+export interface Category {
   route: string;
   label: string;
 }
-  
-

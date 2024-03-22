@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Flex, GridItem } from "@chakra-ui/react"
 import Grid  from "../components/common/Grid"
 import productImage from "../assets/product.jpg"
@@ -60,8 +61,21 @@ const products: Product[] = [
     price: 200,
   },
 ];
+=======
+import { GridItem } from "@chakra-ui/react";
+
+import { Footer, Info } from "../components";
+import { useProducts } from "../hooks";
+import Grid from "../components/common/Grid";
+import NavBar from "../components/Navbar";
+import ProductCard from "../components/ProductCard";
+
+>>>>>>> 003b1dfb55e3bac04a2ad01c44cd46ab2688a097
 function HomePage() {
+  const { products } = useProducts();
+  // sm -> is the normal size phone screen, base -> are the smallest phones
   return (
+<<<<<<< HEAD
     <>  
       <NavBar />
       <Flex ml={'50px'} mt={'10px'}>
@@ -75,8 +89,24 @@ function HomePage() {
       </Flex>
       <Info/>
       <Footer/>
+=======
+    <>
+      <NavBar />
+
+      <Grid column={{ base: 1, md: 3, lg: 4 }} gap={4} px={5}>
+        {products.map((product, index) => (
+          <GridItem key={index} borderRadius={16} overflow={"hidden"}>
+            <ProductCard {...product} />
+          </GridItem>
+        ))}
+      </Grid>
+
+      <Info />
+
+      <Footer />
+>>>>>>> 003b1dfb55e3bac04a2ad01c44cd46ab2688a097
     </>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;
