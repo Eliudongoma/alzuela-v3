@@ -23,7 +23,7 @@ const useCart = () => {
   useEffect(() => {
     setCartProducts(results);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [count, results.length]);
+  }, [count, results.length]); 
 
   const addToCart = (productId: string | number) => {
     const { count, ids } = { ...context.cartProducts };

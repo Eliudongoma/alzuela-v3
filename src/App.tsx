@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Box } from "@chakra-ui/react";
 import { Routes, Route } from "react-router-dom";
-
 import { CartPage, HomePage, AboutPage, SignInPage, SignUpPage } from "./pages";
 import { Header } from "./components";
 import { Product } from "./components/interfaces/Product";
@@ -17,19 +16,6 @@ function App() {
   // With contexts, you can access the data (products/cartProducts) from any file
   return (
     <>
-<<<<<<< HEAD
-      <Header />
-      <Box bg={'gray.50'} px={12} >
-        <Routes>       
-          <Route path='/'element={ <HomePage />}/>
-          <Route path='/about'element={ <About />}/>
-          <Route path='/signin'element={ <SignIn />}/>
-          <Route path='/signup'element={ <SignUp />}/>
-          <Route path='/addtocart'element={ <AddToCart />}/>
-        </Routes>
-      </Box>      
-      
-=======
       <CartContext.Provider value={{ cartProducts, setCartProducts }}>
         <Header />
         <Box>
@@ -44,7 +30,6 @@ function App() {
           </ProductsContext.Provider>
         </Box>
       </CartContext.Provider>
->>>>>>> 003b1dfb55e3bac04a2ad01c44cd46ab2688a097
     </>
   );
 }

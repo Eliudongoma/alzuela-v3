@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import { Box, Flex, Image, Button } from '@chakra-ui/react';
-import Logo from '../assets/logo1.svg'; 
-import { Link } from 'react-router-dom';
-import { SearchBar } from '.';
-import CartIcon from './CartIcon';
-
-function Header() {
-=======
 import { Box, Flex, Image, Text, Button, Icon } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
@@ -18,7 +9,6 @@ import useCart from "../hooks/useCart";
 function Header() {
   const { count } = useCart();
 
->>>>>>> 003b1dfb55e3bac04a2ad01c44cd46ab2688a097
   return (
     <Box
       bg="blue.900"
@@ -44,17 +34,6 @@ function Header() {
             />
           </Link>
         </Box>
-<<<<<<< HEAD
-        {SearchBar({searchvisible:true})}
-        <Box mr={10} display={'flex'} >    
-        <Link to={'/signin'}>              
-          <Button type="submit" color={'white'} bg={"blueviolet" } h={8} w={'auto'} fontSize={'18px'} borderRadius={4} 
-          _hover={{textDecoration:"underline", backgroundColor:'blue.200' }}>
-            Signin/Register
-          </Button>
-        </Link> 
-        <CartIcon/>
-=======
         {SearchBar({ searchvisible: true })}
         <Box mr={10} display={"flex"}>
           <Link to={"/signin"}>
@@ -101,7 +80,6 @@ function Header() {
               {count}
             </Text>
           </Box>
->>>>>>> 003b1dfb55e3bac04a2ad01c44cd46ab2688a097
         </Box>
       </Flex>
     </Box>
