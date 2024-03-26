@@ -1,36 +1,23 @@
-import {
-  Box,
-  Button,
-  Flex,
-  FormControl,
-  FormLabel,
-  Heading,
-  Input,
-  Text,
-} from "@chakra-ui/react";
-import { useState } from "react";
+import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { UserLogin } from "../components/interfaces/UserLogin";
+import { toast } from "react-toastify";
+import * as Yup from "yup";
 
-function SignIn() {
-  const [credentials, setCredentials] = useState<UserLogin>({
-    username: "",
-    password: "",
-  });
+import { Form, FormField, SubmitButton } from "../components/forms";
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    const { name, value } = e.target;
-    setCredentials({ ...credentials, [name]: value });
-  };
+const initialValues = { username: "", password: "" };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+const validationSchema = Yup.object().shape({
+  username: Yup.string().min(4).max(50).required().label("Username"),
+  password: Yup.string().min(6).required().label("Password"),
+});
 
-    setCredentials({
-      username: "",
-      password: "",
-    });
+type Credentials = Yup.InferType<typeof validationSchema>;
+
+function SignInPage() {
+  const handleSubmit = (info: Credentials) => {
+    console.log(info);
+    toast.info("User signed in");
   };
 
   return (
@@ -44,40 +31,18 @@ function SignIn() {
         justifyItems={"center"}
         padding={6}
         boxShadow={"lg"}
-        bg={"gray.50"}
+        bg={"gray.500"}
         h={"380px"}
       >
         <Heading mb={3}>Login</Heading>
-        <form onSubmit={handleSubmit}>
-          <FormControl id="username" mb={3}>
-            <FormLabel fontSize={22}>Username</FormLabel>
-            <Input
-              type="text"
-              value={credentials.username}
-              name="username"
-              placeholder="username"
-              fontSize={20}
-              onChange={handleChange}
-            ></Input>
-          </FormControl>
-          <FormControl id="password" mb={4}>
-            <FormLabel fontSize={22}>Password</FormLabel>
-            <Input
-              type="password"
-              value={credentials.password}
-              name="password"
-              placeholder="password"
-              fontSize={20}
-              onChange={handleChange}
-            ></Input>
-          </FormControl>
-          <FormControl id="submit" mb={3}>
-            <Link to={""}>
-              <Button bg={"blue.100"} w={"100%"}>
-                Login
-              </Button>
-            </Link>
-          </FormControl>
+        <Form
+          initialValues={initialValues}
+          onSubmit={handleSubmit}
+          validationSchema={validationSchema}
+        >
+          <FormField name="username" />
+          <FormField name="password" type="password" />
+          <SubmitButton bg="blue.100" mb={3} title="Login" />
           <Flex justify={"space-between"}>
             <Link to={"/forgotPassword"}>
               <Text _hover={{ textDecoration: "underline" }} fontSize={18}>
@@ -90,10 +55,10 @@ function SignIn() {
               </Text>
             </Link>
           </Flex>
-        </form>
+        </Form>
       </Box>
     </Flex>
   );
 }
 
-export default SignIn;
+export default SignInPage;
