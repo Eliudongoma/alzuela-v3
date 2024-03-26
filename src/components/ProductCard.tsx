@@ -4,7 +4,6 @@ import {
   CardHeader,
   Image,
   Stack,
-  Text,
   Heading,
   Flex,
 } from "@chakra-ui/react";
@@ -12,17 +11,16 @@ import {
 import { Product } from "./interfaces/Product";
 import CartButton from "./CartButton";
 
-const ProductCard = ({ _id, name, description, image, price }: Product) => {
+const ProductCard = ({ _id, name, image, price }: Product) => {
   return (
     <Card
       cursor={"pointer"}
       datatype="Card"
-      bg={"blue.50"}
       pos="relative"
       overflow="hidden"
     >
       <CardHeader h={"60%"} width={"100%"} p={0}>
-        <Flex align={"center"} justify={"center"}>
+        <Flex align={"center"} justify={"center"} h={"300px"}>
           <Image
             src={image}
             alt="Loading"
@@ -38,15 +36,12 @@ const ProductCard = ({ _id, name, description, image, price }: Product) => {
           />
         </Flex>
       </CardHeader>
-      <CardBody bg="gray.700" pb={4} pos="absolute" bottom={0}>
+      <CardBody bg="gray.200" pb={4} pos="absolute" bottom={0} w={"100%"} h={"120px"}>
         <Stack>
           <Heading fontSize={20} textAlign={"center"}>
             {name}
-          </Heading>
-          <Text fontSize={16} noOfLines={2}>
-            {description}
-          </Text>
-          <Heading fontSize={16}>Ksh{price}</Heading>
+          </Heading>          
+          <Heading fontSize={16} textAlign={"center"}>Ksh {price}</Heading>
         </Stack>
         <Flex justify={"center"} align={"center"}>
           <CartButton productId={_id} />

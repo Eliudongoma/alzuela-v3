@@ -59,17 +59,16 @@ const useCart = () => {
     return found;
   }
 
-  const incrementQuantity = (productId: string) => {
+  const incrementQuantity = (productId: string | number) => {
     const updated = cartProducts.map((p) => {
       if (p._id === productId) p.quantity += 1;
-
       return p;
     });
 
     setCartProducts(updated);
   };
 
-  const decrementQuantity = (id: string) => {
+  const decrementQuantity = (id: string | number) => {
     const updated = cartProducts.map((p) => {
       if (p._id !== id) return p;
 
