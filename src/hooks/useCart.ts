@@ -9,9 +9,7 @@ import { useProducts } from ".";
 export interface CartProduct extends Product {
   quantity: number;
 }
-// Adding products to cart is done by adding the product's id to the ids object like {id1: 'id1'} and then incrementing the count
-// Removing a product from the cart is the opposite
-// To check whether a product is in cart, just check if the id is present in the ids object
+
 const useCart = () => {
   const context = useContext(CartContext);
   const [cartProducts, setCartProducts] = useState<CartProduct[]>([]);
@@ -23,9 +21,9 @@ const useCart = () => {
   useEffect(() => {
     setCartProducts(results);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [count, results.length]); 
+  }, [count, results.length]);
 
-  const addToCart = (productId: string | number) => {
+  const addToCart = (productId: string) => {
     const { count, ids } = { ...context.cartProducts };
 
     if (hasProductInCart(productId)) return;
@@ -34,7 +32,7 @@ const useCart = () => {
     context.setCartProducts({ count: count + 1, ids });
   };
 
-  const removeFromCart = (productId: string | number) => {
+  const removeFromCart = (productId: string) => {
     const { count, ids } = { ...context.cartProducts };
 
     if (!hasProductInCart(productId)) return;

@@ -7,7 +7,7 @@ import ProductCard from "../components/ProductCard";
 
 function HomePage() {
   const { products } = useProducts();
-  // sm -> is the normal size phone screen, base -> are the smallest phones
+
   return (
     <>
       <NavBar />

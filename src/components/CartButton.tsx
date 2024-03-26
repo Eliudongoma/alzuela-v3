@@ -3,12 +3,10 @@ import { CheckCircleIcon } from "@chakra-ui/icons";
 
 import { useCart } from "../hooks";
 
-function CartButton({ productId }: { productId: string | number }) {
+function CartButton({ productId }: { productId: string }) {
   const cart = useCart();
 
-  const isAddedToCart = cart.hasProduct(productId);
-
-  if (isAddedToCart)
+  if (cart.hasProduct(productId))
     return (
       <Flex align={"center"} onClick={() => cart.remove(productId)}>
         <CheckCircleIcon color={"green.400"} />

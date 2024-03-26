@@ -13,7 +13,7 @@ function App() {
     count: 0,
     ids: {},
   });
-  // With contexts, you can access the data (products/cartProducts) from any file
+
   return (
     <>
       <CartContext.Provider value={{ cartProducts, setCartProducts }}>
