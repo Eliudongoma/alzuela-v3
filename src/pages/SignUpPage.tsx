@@ -1,90 +1,73 @@
-import { Box, Button, Flex, FormControl, FormLabel, Heading, Input} from "@chakra-ui/react"
-import { useState } from "react"
-import { Link } from "react-router-dom";
+import { Box, Flex, Heading} from "@chakra-ui/react"
+import * as Yup from 'yup'
 import { UserSignUp } from "../components/interfaces/UserSignUp";
+import { Form, FormField, SubmitButton } from "../components/forms";
+import { toast } from "react-toastify";
 
+const initialValues: UserSignUp = {
+  username: "", 
+  password: "", 
+  address:"", 
+  phone: "", 
+  firstname: "", 
+  lastname: "",
+  email: ""
+}
+const validationSchema = Yup.object().shape({
+    username: Yup.string().min(4).max(50).required().label("username"),
+    password: Yup.string().min(8).max(15).required().label("password"),
+    address: Yup.string().min(2).max(30).required().label("address"),
+    phone: Yup.string().min(10).max(10).required().label("phone"),
+    firstname: Yup.string().min(2).max(30).required().label("firstname"),
+    lastname: Yup.string().min(2).max(30).required().label("lastname"),
+    email: Yup.string().min(2).max(30).required().label("email")
+})
+type Credentials = Yup.InferType<typeof validationSchema>;
 
-function SignIn() {
-  const [credentials, setCredentials] = useState<UserSignUp>({
-    username: "",
-    password: "",
-    address: "",
-    phone: "",
-    firstname:"",
-    lastname:"",
-    email:""
-  })
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    const {name, value} = e.target;
-    setCredentials({...credentials, [name]: value})
-  }
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    setCredentials({
-      username:"",
-      password:"",
-      address: "",
-      phone: "",
-      firstname:"",
-      lastname:"",
-      email:""
-    })
+function SignUp() {
+  
+  const handleSubmit = (info: Credentials) => {
+    console.log(info)
+    toast.info("Successfull signup!")    
   }
   return (
     <>
-    <Flex justify={'center'} align={'center'} mt={'90px'} zIndex={1000}>
-      <Box border={"1px"} borderRadius={"10px"} borderColor={'grey.200'} w={'500px'} alignItems={"center"} justifyItems={'center'}
-        padding={6} boxShadow={'lg'} bg={'gray.50'} h={'485px'}>
-        <Heading mb={3}>Sign Up</Heading>
-        <form onSubmit={handleSubmit}>   
+    <Flex 
+      justify={'center'} 
+      align={'center'} 
+      mt={'90px'}>
+      <Box 
+        borderRadius={"10px"} 
+        borderColor={'gray.100'} 
+        w={'500px'}        
+        padding={6}
+        boxShadow={"lg"} 
+        bg={'gray.50'}
+        h={'auto'}>
+        <Heading mb={2}>Sign Up</Heading>
+        <Form 
+          onSubmit={handleSubmit}
+          initialValues={initialValues}
+          validationSchema={validationSchema}>
           <Flex>
-            <FormControl id="Firstname" mb={2}>
-              <FormLabel fontSize={16}>Username</FormLabel>
-              <Input type="text" value={credentials.firstname} name="firstname" placeholder="First name" fontSize={16} onChange={handleChange}></Input>
-            </FormControl>
-            <FormControl id="lastname" mb={2}>
-              <FormLabel fontSize={16}>Username</FormLabel>
-              <Input type="text" value={credentials.lastname} name="lastname" placeholder="Last name" fontSize={16} onChange={handleChange}></Input>
-           </FormControl>
+            <FormField name="firstname"/>
+            <FormField name="lastname"/>
           </Flex>
-          <FormControl id="email" mb={2}>
-              <FormLabel fontSize={16}>Email</FormLabel>
-              <Input type="mail" value={credentials.email} name="email" placeholder="Email" fontSize={16} onChange={handleChange}></Input>
-          </FormControl>        
-            
+          <FormField name="email" type="email"/>
           <Flex>
-            <FormControl id="username" mb={2}>
-              <FormLabel fontSize={16}>Username</FormLabel>
-              <Input type="text" value={credentials.username} name="username" placeholder="username" fontSize={16} onChange={handleChange}></Input>
-            </FormControl>
-            <FormControl id="password" mb={2}>
-              <FormLabel fontSize={16}>Password</FormLabel>
-              <Input type="password" value={credentials.password} name="password" placeholder="password" fontSize={16} onChange={handleChange}></Input>
-          </FormControl>
-          </Flex>    
+            <FormField name="username"/>
+            <FormField name="password" type="password"/>
+          </Flex>
           <Flex>
-             <FormControl id="phone" mb={2}>
-              <FormLabel fontSize={16}>Phone</FormLabel>
-              <Input type="number" value={credentials.phone} name="phone" placeholder="Phone" fontSize={16} onChange={handleChange}></Input>
-          </FormControl>
-            <FormControl id="address" mb={4}>
-              <FormLabel fontSize={16}>Address</FormLabel>
-              <Input type="text" value={credentials.address} name="address" placeholder="Address" fontSize={16} onChange={handleChange}></Input>
-            </FormControl>  
-            </Flex>  
-          <FormControl id="submit" mb={2}>
-            <Link to={""}>
-              <Button bg={'gray.330'} w={'100%'}>Create Account</Button>
-            </Link>            
-          </FormControl>
-        </form>
+            <FormField name="phone" type="number"/>
+            <FormField name="address"/>
+          </Flex>
+          <SubmitButton title="Create Account"/>
+        </Form>
       </Box>
     </Flex>
     </>
   )
 }
 
-export default SignIn
+export default SignUp

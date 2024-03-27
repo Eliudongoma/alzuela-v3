@@ -20,7 +20,7 @@ const ProductCard = ({ _id, name, image, price }: Product) => {
       overflow="hidden"
     >
       <CardHeader h={"60%"} width={"100%"} p={0}>
-        <Flex align={"center"} justify={"center"} h={"300px"}>
+        <Flex align={"center"} justify={"center"} h={"250px"}>
           <Image
             src={image}
             alt="Loading"
@@ -36,16 +36,21 @@ const ProductCard = ({ _id, name, image, price }: Product) => {
           />
         </Flex>
       </CardHeader>
-      <CardBody bg="gray.200" pb={4} pos="absolute" bottom={0} w={"100%"} h={"120px"}>
-        <Stack>
-          <Heading fontSize={20} textAlign={"center"}>
+      <CardBody
+        bg="gray.200" 
+        pos="absolute" 
+        opacity={0.8} 
+        bottom={0} 
+        textAlign={"center"}
+        p={1}
+        w={"100%"} h={"100px"}>
+        <Stack >
+          <Heading fontSize={20} >
             {name}
           </Heading>          
-          <Heading fontSize={16} textAlign={"center"}>Ksh {price}</Heading>
+          <Heading fontSize={16} >Ksh {price}</Heading> 
+          <CartButton productId={_id} />           
         </Stack>
-        <Flex justify={"center"} align={"center"}>
-          <CartButton productId={_id} />
-        </Flex>
       </CardBody>
     </Card>
   );

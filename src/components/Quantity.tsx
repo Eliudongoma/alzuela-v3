@@ -15,28 +15,29 @@ function Quantity({ productId}: {productId: string | number}) {
   const handleRemove = () => {
     cart.decrementQuantity(productId)
     setQuantity(quantity - 1) 
+    
   };
   return (
     <FormControl>
       <Flex mt={2} align={"center"}>
-      <FormLabel>Quantity:</FormLabel>      
-      <Flex align={"center"}>
-        <Input 
-          type="number" 
-          value={quantity} 
-          readOnly 
-          w={"40px"} 
-          h={"30px"}
-          fontWeight={"bold"}          
-          textAlign={"center"} 
-          p={1}/>
-        <Button onClick={handleAdd}>
-          +
-        </Button>
-        <Button onClick={handleRemove}>
-          -
-        </Button>
-      </Flex>
+        <FormLabel>Quantity:</FormLabel>      
+        <Flex align={"center"}>
+          <Input 
+            type="number" 
+            value={quantity} 
+            readOnly 
+            w={"40px"} 
+            h={"30px"}
+            fontWeight={"bold"}          
+            textAlign={"center"} 
+            p={1}/>
+          <Button onClick={handleAdd}>
+            +
+          </Button>
+          <Button onClick={handleRemove}>
+            -
+          </Button>
+        </Flex>
       </Flex>
     </FormControl>    
   )

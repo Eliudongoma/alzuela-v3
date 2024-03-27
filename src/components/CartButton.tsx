@@ -8,11 +8,13 @@ function CartButton({ productId }: { productId: string }) {
 
   if (cart.hasProduct(productId))
     return (
-      <Flex align={"center"} onClick={() => cart.remove(productId)}>
-        <CheckCircleIcon color={"green.400"} />
-        <Text color={"green.400"} py={0}>
-          Remove from Cart
-        </Text>
+      <Flex 
+        align={"center"}  
+        color={"green.400"}
+        justify={"center"} 
+        onClick={() => cart.remove(productId)}>
+        <CheckCircleIcon/>
+        <Text>Remove from Cart</Text>
       </Flex>
     );
 
@@ -20,12 +22,11 @@ function CartButton({ productId }: { productId: string }) {
     <Button
       bg={"blue.400"}
       color={"white"}
-      h={6}
-      w={"100%"}
-      my={4}
-      fontSize={22}
-      onClick={() => cart.add(productId)}
-    >
+      h={7}
+      mx={"auto"}
+      w={"80%"}
+      fontSize={20}
+      onClick={() => cart.add(productId)}>
       <Text>Add To Cart</Text>
     </Button>
   );

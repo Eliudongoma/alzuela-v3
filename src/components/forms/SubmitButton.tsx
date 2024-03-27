@@ -15,7 +15,7 @@ const SubmitButton = ({ title, ...otherProps }: Props) => {
   };
 
   return (
-    <Button onClick={handleClick} w="100%" mb={2} {...otherProps}>
+    <Button onClick={handleClick} w="100%" mb={1} {...otherProps} bg={"gray.300"}>
       {title}
     </Button>
   );

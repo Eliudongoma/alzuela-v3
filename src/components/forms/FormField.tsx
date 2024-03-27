@@ -19,13 +19,12 @@ const FormField = ({
   placeholder,
   ...inputProps
 }: Props) => {
-  const { setFieldTouched, setFieldValue, errors, touched, values } =
-    useFormikContext<FieldValue>();
+  const { setFieldTouched, setFieldValue, errors, touched, values } = useFormikContext<FieldValue>();
 
   const capitalizedName = capitalizeFirstLetter(name);
 
   return (
-    <Box mb={3}>
+    <Box mb={2}>
       <FormLabel fontSize={22}>{capitalizedName}</FormLabel>
       <FormInput
         onBlur={() => setFieldTouched(name)}

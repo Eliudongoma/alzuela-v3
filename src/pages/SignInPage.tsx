@@ -21,25 +21,23 @@ function SignInPage() {
   };
 
   return (
-    <Flex justify={"center"} align={"center"} mt={"160px"}>
+    <Flex 
+      justify={"center"} 
+      align={"center"} 
+      mt={"160px"}>
       <Box
-        border={"1px"}
         borderRadius={"10px"}
-        borderColor={"grey.200"}
-        w={"400px"}
-        alignItems={"center"}
-        justifyItems={"center"}
+        borderColor={"gray.200"}
+        w={"400px"}        
         padding={6}
         boxShadow={"lg"}
-        bg={"gray.500"}
-        h={"380px"}
-      >
-        <Heading mb={3}>Login</Heading>
+        bg={"gray.100"}
+        h={"auto"}>
+        <Heading mb={2}>Login</Heading>
         <Form
           initialValues={initialValues}
           onSubmit={handleSubmit}
-          validationSchema={validationSchema}
-        >
+          validationSchema={validationSchema}>
           <FormField name="username" />
           <FormField name="password" type="password" />
           <SubmitButton bg="blue.100" mb={3} title="Login" />

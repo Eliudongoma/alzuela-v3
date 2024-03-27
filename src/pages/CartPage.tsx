@@ -1,6 +1,7 @@
 import { Box, Divider, Flex, Heading, Image, Text } from '@chakra-ui/react'
 import { useCart } from '../hooks';
-import Quantity from '../components/Quantity';
+import { Quantity, CartTotal } from '../components';
+import { Link } from 'react-router-dom';
 
 function CartPage() {
 
@@ -10,11 +11,11 @@ function CartPage() {
 
   if(productLength)
     return (
-    <Box mt={"90px"} ml={"20px"}>
+    <Box mt={"90px"}>
+      <Flex justify={"center"}>
         <Flex
-          maxW={"700px"} 
+          maxW={"700px"}
           bg={"gray.100"} 
-          border={"2px"}
           borderColor={"gray.300"}
           borderRadius={"10px"} 
           flexDirection={'column'}>
@@ -24,7 +25,7 @@ function CartPage() {
               key={product._id}             
               p={2}
               >
-              <Flex flexGrow={1} h={"30%"} w={"10%"}>
+              <Flex flexGrow={1} w={"10%"}>
                 <Image 
                   src={product.image} 
                   alt='Product' 
@@ -47,6 +48,8 @@ function CartPage() {
             </>
           ))}          
         </Flex>
+        <CartTotal />
+      </Flex>
     </Box>
     );
     return(
@@ -56,12 +59,21 @@ function CartPage() {
           align={"center"}
           maxW={"auto"} 
           mx={10}
+          flexDir={"column"}
+          textColor={"gray.400"}
           h={"300px"}
           bg={"gray.50"} 
           border={"2px"}
           borderColor={"gray.100"}
           borderRadius={"10px"}>
-            <Heading textColor={"gray.400"}>Add items to the cart!!!</Heading>
+            <Heading >Add items to the cart!!!</Heading>
+            <Link to={'/'}>
+              <Heading 
+                fontSize={30}
+                p={1}
+                _hover={{backgroundColor: "gray.200", textColor:"white", borderRadius:"10px", textDecoration:"underline"}}>
+                  Continue shopping!!</Heading>
+            </Link>
         </Flex>
     </Box>
     )

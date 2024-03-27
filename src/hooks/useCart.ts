@@ -32,7 +32,7 @@ const useCart = () => {
     context.setCartProducts({ count: count + 1, ids });
   };
 
-  const removeFromCart = (productId: string) => {
+  const removeFromCart = (productId: string | number) => {
     const { count, ids } = { ...context.cartProducts };
 
     if (!hasProductInCart(productId)) return;
