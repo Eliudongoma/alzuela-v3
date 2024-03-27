@@ -7,7 +7,7 @@ import Logo from "../assets/logo1.svg";
 import useCart from "../hooks/useCart";
 
 function Header() {
-  const { count } = useCart();
+  const cart = useCart();
 
   return (
     <Box
@@ -54,7 +54,7 @@ function Header() {
             </Button>
           </Link>
           <Box>
-            <Link to={"/addtocart"}>
+            <Link to={"/cart"}>
               <Icon
                 as={FaShoppingCart}
                 color={"white"}
@@ -77,7 +77,7 @@ function Header() {
               mt={"-14"}
               ml={"6"}
             >
-              {count}
+              {cart.count}
             </Text>
           </Box>
         </Box>

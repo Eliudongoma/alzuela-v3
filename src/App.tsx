@@ -25,7 +25,7 @@ function App() {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/signin" element={<SignInPage />} />
               <Route path="/signup" element={<SignUpPage />} />
-              <Route path="/addtocart" element={<CartPage />} />
+              <Route path="/cart" element={<CartPage />} />
             </Routes>
           </ProductsContext.Provider>
         </Box>

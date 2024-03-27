@@ -2,7 +2,7 @@ import { createContext } from "react";
 
 export interface CartProducts {
   count: number;
-  ids: { [id: string | number]: string | number }; 
+  ids: { [id: string]: string };
 }
 
 export interface Cart {
