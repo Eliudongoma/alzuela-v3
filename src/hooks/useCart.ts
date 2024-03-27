@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 
 import { CartContext } from "../contexts";
 import { figure } from "../utils";
+import { getBoolean } from "../utils/funcs";
 import { Product } from "../components/interfaces/Product";
 import { useProducts } from ".";
 
@@ -44,7 +45,7 @@ const useCart = () => {
   const clearCart = () => context.setCartProducts({ count: 0, ids: {} });
 
   function hasProductInCart(productId: string | number): boolean {
-    return context.cartProducts.ids[productId] ? true : false;
+    return getBoolean(context.cartProducts.ids[productId]);
   }
 
   function getProducts(): CartProduct[] {

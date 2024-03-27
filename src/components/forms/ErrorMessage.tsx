@@ -6,7 +6,12 @@ interface Props {
 }
 
 const ErrorMessage = ({ error, visible }: Props) => {
-  if (visible) return <Text color="red.600">{error}</Text>;
+  if (visible)
+    return (
+      <Text color="red.600" fontSize="sm" mt={0.5}>
+        {error}
+      </Text>
+    );
 
   return null;
 };
