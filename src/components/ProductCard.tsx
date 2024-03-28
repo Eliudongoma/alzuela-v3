@@ -9,16 +9,11 @@ import {
 } from "@chakra-ui/react";
 
 import { Product } from "./interfaces/Product";
-import CartButton from "./CartButton";
+import CartButton from "./cart/Button";
 
 const ProductCard = ({ _id, name, image, price }: Product) => {
   return (
-    <Card
-      cursor={"pointer"}
-      datatype="Card"
-      pos="relative"
-      overflow="hidden"
-    >
+    <Card cursor={"pointer"} datatype="Card" pos="relative" overflow="hidden">
       <CardHeader h={"60%"} width={"100%"} p={0}>
         <Flex align={"center"} justify={"center"} h={"250px"}>
           <Image

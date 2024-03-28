@@ -1,7 +1,7 @@
 import { Button, Text, Flex } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 
-import { useCart } from "../hooks";
+import { useCart } from "../../hooks";
 
 function CartButton({ productId }: { productId: string }) {
   const cart = useCart();

@@ -1,59 +1,35 @@
-import { Box, Divider, Flex, Heading, Image, Text } from '@chakra-ui/react'
+import { Box, Flex, Heading } from '@chakra-ui/react'
 import { useCart } from '../hooks';
-import { Quantity, CartTotal } from '../components';
 import { Link } from 'react-router-dom';
+import CartProduct from "../components/cart/Product";
+import { CartTotal } from '../components';
 
 function CartPage() {
+  const products = useCart().getProducts();
 
-  const cart = useCart()
-  const products = cart.getProducts()
-  const productLength = products.length >= 1 ? true : false
-
-  if(productLength)
+  if (products.length)
     return (
-    <Box mt={"90px"}>
-      <Flex justify={"center"}>
+      <Box mt={"90px"} ml={"20px"}>
+        <Flex justify={"center"}>
         <Flex
           maxW={"700px"}
-          bg={"gray.100"} 
+          bg={"gray.100"}
+          border={"2px"}
           borderColor={"gray.300"}
-          borderRadius={"10px"} 
-          flexDirection={'column'}>
-          { products.map((product) => (
-            <>
-            <Flex 
-              key={product._id}             
-              p={2}
-              >
-              <Flex flexGrow={1} w={"10%"}>
-                <Image 
-                  src={product.image} 
-                  alt='Product' 
-                  objectFit={"contain"} 
-                  borderRadius={7}
-                  />
-              </Flex>
-              <Flex 
-                flexDirection={'column'} 
-                flexGrow={2} 
-                ml={2} 
-                textColor={"gray.500"}>
-                <Heading fontSize={"30px"} >{product.name}</Heading>
-                <Text>{product.description}</Text>
-                <Heading fontSize={"20px"}>Ksh {product.price}</Heading>
-                <Quantity productId ={product._id}/>
-              </Flex>
-            </Flex>
-            <Divider w={"90%"}/>
-            </>
-          ))}          
+          borderRadius={"10px"}
+          flexDirection={"column"}
+        >
+          {products.map((product) => (
+            <CartProduct product={product} key={product._id} />
+          ))}
         </Flex>
-        <CartTotal />
-      </Flex>
-    </Box>
+        <CartTotal/>
+        </Flex>
+      </Box>
     );
-    return(
-      <Box mt={"90px"} justifyContent={"center"}>
+
+  return (
+    <Box mt={"90px"} justifyContent={"center"}>
         <Flex 
           justify={"center" } 
           align={"center"}
@@ -76,10 +52,7 @@ function CartPage() {
             </Link>
         </Flex>
     </Box>
-    )
-    }
+  );
+}
 
-
-
-export default CartPage
-
+export default CartPage;
