@@ -3,13 +3,16 @@ import { useCart } from '../hooks';
 import { Link } from 'react-router-dom';
 import CartProduct from "../components/cart/Product";
 import { CartTotal } from '../components';
-
+// import { WindowSize } from '../components/common';
 function CartPage() {
   const products = useCart().getProducts();
+  // const isScreenSmall = WindowSize( {screenWidth: 900} )
 
   if (products.length)
     return (
       <Box mt={"90px"} ml={"20px"}>
+        {/* <CartTotal/> */}
+         {/* {isScreenSmall && <CartTotal/> } */}
         <Flex justify={"center"}>
         <Flex
           maxW={"700px"}
