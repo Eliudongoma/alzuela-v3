@@ -15,12 +15,12 @@ function CartPage() {
         <CartTotal display={{ sm: "flex", md: "none" }} />
         <Flex justify={"center"}>
           <Flex
-            maxW={"700px"}
-            bg={"gray.100"}
-            border={"2px"}
-            borderColor={"gray.300"}
-            borderRadius={"10px"}
-            flexDirection={"column"}
+            maxW="700px"
+            bg="gray.100"
+            border="2px"
+            borderColor="gray.300"
+            borderRadius="10px"
+            flexDirection="column"
           >
             {products.map((product) => (
               <CartProduct product={product} key={product._id} />
