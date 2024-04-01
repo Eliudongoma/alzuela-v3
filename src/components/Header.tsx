@@ -2,9 +2,10 @@ import { Box, Flex, Image, Text, Button, Icon } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 
+import { ColorSwitchMode } from "./common";
 import { SearchBar } from ".";
-import Logo from "../assets/logo1.svg";
-import useCart from "../hooks/useCart";
+import { useCart } from "../hooks";
+import logo from "../assets/logo1.svg";
 
 function Header() {
   const cart = useCart();
@@ -12,19 +13,19 @@ function Header() {
   return (
     <Box
       bg="blue.900"
-      h={"70px"}
-      w={"100%"}
+      h="70px"
+      w="100%"
       top={0}
       right={0}
       left={0}
       zIndex={999}
-      position={"fixed"}
+      position="fixed"
     >
       <Flex align={"center"} justify={"space-between"} w={"100%"} h={"100%"}>
         <Box>
           <Link to={"/"}>
             <Image
-              src={Logo}
+              src={logo}
               alt="logo"
               h={16}
               w={"auto"}
@@ -34,7 +35,8 @@ function Header() {
             />
           </Link>
         </Box>
-        {SearchBar({ searchvisible: true })}
+        <SearchBar />
+        <ColorSwitchMode />
         <Box mr={10} display={"flex"}>
           <Link to={"/signin"}>
             <Button
