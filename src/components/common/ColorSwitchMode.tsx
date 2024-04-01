@@ -1,9 +1,9 @@
-import { Switch, useColorMode } from "@chakra-ui/react";
+import { Switch } from "@chakra-ui/react";
+
+import { useAppColorMode } from "../../hooks";
 
 const ColorModeSwitch = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
-
-  const isDarkMode = colorMode === "dark";
+  const { isDarkMode, toggleColorMode } = useAppColorMode();
 
   return (
     <Switch

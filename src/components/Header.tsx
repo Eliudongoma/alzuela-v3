@@ -1,14 +1,32 @@
-import { Box, Flex, Image, Text, Button, Icon } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Box, Flex, Image, Text, Icon, Switch } from "@chakra-ui/react";
+import { Link, useNavigate } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
+import { BiUser } from "react-icons/bi";
+import { GoSignIn, GoSignOut } from "react-icons/go";
 
-import { ColorSwitchMode } from "./common";
+import { MenuContent } from "./common";
+import { Item } from "./common/SelectorMenuList";
 import { SearchBar } from ".";
-import { useCart } from "../hooks";
+import { useAppColorMode, useCart } from "../hooks";
 import logo from "../assets/logo1.svg";
 
 function Header() {
+  const { isDarkMode, toggleColorMode } = useAppColorMode();
   const cart = useCart();
+  const navigate = useNavigate();
+
+  const controls: Item[] = [
+    { label: "Sign In", icon: <GoSignIn />, route: "/signin" },
+    { label: "Sign Up", icon: <GoSignOut />, route: "/signup" },
+    {
+      label: isDarkMode ? "Dark Mode" : "Light Mode",
+      icon: <Switch size="sm" isChecked={isDarkMode} />,
+      onClick: () => toggleColorMode(),
+    },
+  ];
+
+  const handleItemSelection = (item: Item) =>
+    item.route ? navigate(item.route) : item.onClick?.();
 
   return (
     <Box
@@ -36,25 +54,12 @@ function Header() {
           </Link>
         </Box>
         <SearchBar />
-        <ColorSwitchMode />
-        <Box mr={10} display={"flex"}>
-          <Link to={"/signin"}>
-            <Button
-              type="submit"
-              color={"white"}
-              bg={"blueviolet"}
-              h={8}
-              w={"auto"}
-              fontSize={"18px"}
-              borderRadius={4}
-              _hover={{
-                textDecoration: "underline",
-                backgroundColor: "blue.200",
-              }}
-            >
-              Signin/Register
-            </Button>
-          </Link>
+        <Box mr={10} display="flex">
+          <MenuContent
+            Button={<BiUser size={20} />}
+            data={controls}
+            onSelectItem={handleItemSelection}
+          />
           <Box>
             {cart.count ? (
               <>
