@@ -28,7 +28,7 @@ function SignInPage() {
         w={"400px"}        
         padding={6}
         boxShadow={"lg"}
-        bg={"gray.100"}
+        bg={"gray.600"}
         h={"auto"}>
         <Heading mb={2}>Login</Heading>
         <Form

@@ -18,7 +18,7 @@ const Form = <FormValues extends FormikValues>({
   ...otherProps
 }: Props<FormValues>) => (
   <Formik<FormValues> {...otherProps} validationSchema={validationSchema}>
-    {() => <Box>{children}</Box>}
+    {() => <Box >{children}</Box>}
   </Formik>
 );
 

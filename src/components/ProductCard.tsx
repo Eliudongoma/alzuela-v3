@@ -8,7 +8,7 @@ import {
   Flex,
 } from "@chakra-ui/react";
 
-import { Product } from "./interfaces/Product";
+import { Product } from "./interfaces/Product"; 
 import CartButton from "./cart/Button";
 
 const ProductCard = ({ _id, name, image, price }: Product) => {

@@ -15,7 +15,7 @@ const FormLink = ({ label, route }: Props) => {
       cursor="pointer"
       fontSize="sm"
       onClick={() => navigate(route)}
-    >
+    > 
       {label}
     </Text>
   );
