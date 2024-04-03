@@ -1,4 +1,4 @@
-import { Box, Flex, Heading } from "@chakra-ui/react";
+import { Box, Flex, Heading, useBreakpointValue } from "@chakra-ui/react";
 import { useCart } from "../hooks";
 import { Link } from "react-router-dom";
 import CartProduct from "../components/cart/Product";
@@ -6,27 +6,24 @@ import { CartTotal } from "../components";
 // import { WindowSize } from '../components/common';
 function CartPage() {
   const products = useCart().getProducts();
-  // const isScreenSmall = useBreakpointValue({ sm: true, md: false });
-
+  const isScreenSmall = useBreakpointValue({ sm: true, md: false });
+  console.log(isScreenSmall);
   if (products.length)
     return (
       <Box mt={"90px"} ml={"20px"}>
-        {/* <CartTotal/> */}
-        <CartTotal display={{ sm: "flex", md: "none" }} />
         <Flex justify={"center"}>
           <Flex
             maxW="700px"
-            bg="gray.100"
+            bg="gray.200"
             border="2px"
             borderColor="gray.300"
             borderRadius="10px"
-            flexDirection="column"
-          >
+            flexDirection="column">
             {products.map((product) => (
               <CartProduct product={product} key={product._id} />
             ))}
           </Flex>
-          <CartTotal display={{ sm: "none" }} />
+          <CartTotal /> 
         </Flex>
       </Box>
     );
@@ -44,8 +41,7 @@ function CartPage() {
         bg={"gray.50"}
         border={"2px"}
         borderColor={"gray.100"}
-        borderRadius={"10px"}
-      >
+        borderRadius={"10px"}>
         <Heading>Add items to the cart!!!</Heading>
         <Link to={"/"}>
           <Heading
@@ -56,8 +52,7 @@ function CartPage() {
               textColor: "white",
               borderRadius: "10px",
               textDecoration: "underline",
-            }}
-          >
+            }}>
             Continue shopping!!
           </Heading>
         </Link>

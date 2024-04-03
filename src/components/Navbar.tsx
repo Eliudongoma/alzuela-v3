@@ -8,7 +8,7 @@ function NavBar() {
 
   return (
     <Box bg="gray.300" mt="70px" h="50px" pt={3} maxW={"100%"}
-       alignItems="center" overflowX={'hidden'}>
+       alignItems="center" overflowX={'auto'}>
       <Flex ml="50px" w="100%" justify={'center'}>
         {categories.map((item, index) => (
           <Badge

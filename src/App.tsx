@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Box } from "@chakra-ui/react";
 import { Routes, Route } from "react-router-dom";
-import { CartPage, HomePage, AboutPage, SignInPage, SignUpPage } from "./pages";
+import { CartPage, HomePage, AboutPage, SignInPage, SignUpPage, ProductPage } from "./pages";
 import { Header } from "./components";
 import { Product}  from "./components/interfaces/Product";
 import { ProductsContext } from "./contexts";
@@ -26,6 +26,7 @@ function App() {
               <Route path="/signin" element={<SignInPage />} />
               <Route path="/signup" element={<SignUpPage />} />
               <Route path="/cart" element={<CartPage />} />
+              <Route path="/product/:productId" element={<ProductPage />} />
             </Routes>
           </ProductsContext.Provider>
         </Box>

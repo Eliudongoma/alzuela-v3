@@ -10,6 +10,7 @@ function CartButton({ productId }: { productId: string }) {
     return (
       <Flex 
         align={"center"}  
+        cursor={"pointer"}
         color={"green.400"}
         justify={"center"} 
         onClick={() => cart.remove(productId)}>

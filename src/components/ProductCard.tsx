@@ -10,12 +10,15 @@ import {
 
 import { Product } from "./interfaces/Product"; 
 import CartButton from "./cart/Button";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ _id, name, image, price }: Product) => {
   return (
+    
     <Card cursor={"pointer"} datatype="Card" pos="relative" overflow="hidden">
       <CardHeader h={"60%"} width={"100%"} p={0}>
         <Flex align={"center"} justify={"center"} h={"250px"}>
+        <Link to={`/product/${_id}`}>
           <Image
             src={image}
             alt="Loading"
@@ -29,6 +32,7 @@ const ProductCard = ({ _id, name, image, price }: Product) => {
             }}
             transition={"transform 0.5s"}
           />
+        </Link>
         </Flex>
       </CardHeader>
       <CardBody
