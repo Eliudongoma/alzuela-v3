@@ -10,7 +10,7 @@ const CartIcon = () => {
     <Box> 
       <Link  to={'/addtocart'}><Icon as={FaShoppingCart} color={'white'} px={2} h={'auto'} w={'auto'} boxSize={10} _hover={{cursor:'pointer'}}/></Link>
       <Text 
-        bg={'blue.300'} color={'white'} w={6} h={6} align={'center'} border={14} borderRadius={18} position={'fixed'} mt={'-14'} ml={'6'}
+        bg={'blue.300'} color={'white'} w={"auto"} h={"auto"} align={'center'} border={8} borderRadius={14} position={'fixed'} mt={'-14'} ml={'6'}
       >0</Text>
     </Box>
   )

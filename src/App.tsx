@@ -3,7 +3,7 @@ import { Box } from "@chakra-ui/react";
 import { Routes, Route } from "react-router-dom";
 import { CartPage, HomePage, AboutPage, SignInPage, SignUpPage } from "./pages";
 import { Header } from "./components";
-import { Product } from "./components/interfaces/Product";
+import { Product}  from "./components/interfaces/Product";
 import { ProductsContext } from "./contexts";
 import CartContext, { CartProducts } from "./contexts/CartContext";
 

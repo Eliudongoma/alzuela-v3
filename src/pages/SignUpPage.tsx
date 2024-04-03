@@ -41,7 +41,7 @@ function SignUp() {
           w={"500px"}
           padding={6}
           boxShadow={"lg"}
-          bg={"gray.50"}
+          bg={"gray.500"}
           h={"auto"}
         >
           <Heading mb={2}>Sign Up</Heading>
