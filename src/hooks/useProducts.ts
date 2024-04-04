@@ -7,7 +7,7 @@ import productImage3 from "../assets/product3.jpeg";
 import productImage2 from "../assets/product2.webp";
 import ProductsContext from "../contexts/ProductsContext";
 
-const sampleProducts: Product[] = [ 
+const sampleProducts: Product[] = [
   {
     _id: "1",
     description: "A premium product with profound results in a global scale!!",
@@ -67,7 +67,11 @@ const useProducts = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sampleProducts.length]);
 
-  return { products, setProducts };
+  const findProduct = (productId: string | undefined) => {
+    if (productId) return products.find((p) => p._id === productId);
+  };
+
+  return { findProduct, products, setProducts };
 };
 
 export default useProducts;

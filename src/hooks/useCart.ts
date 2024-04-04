@@ -7,13 +7,9 @@ import { getBoolean } from "../utils/funcs";
 import { Product } from "../components/interfaces/Product";
 import { useProducts } from ".";
 
-export interface CartProduct extends Product {
-  quantity: number;
-}
-
 const useCart = () => {
   const context = useContext(CartContext);
-  const [cartProducts, setCartProducts] = useState<CartProduct[]>([]);
+  const [cartProducts, setCartProducts] = useState<Product[]>([]);
   const { products } = useProducts();
 
   const count = context.cartProducts.count;
@@ -24,66 +20,63 @@ const useCart = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [count, results.length]);
 
-  const addToCart = (productId: string) => {
+  const add = (productId: string) => {
     const { count, ids } = { ...context.cartProducts };
 
-    if (hasProductInCart(productId)) return;
-    ids[productId] = productId;
+    if (hasProduct(productId)) return;
+    ids[productId] = 1;
 
     context.setCartProducts({ count: count + 1, ids });
   };
 
-  const removeFromCart = (productId: string | number) => {
+  const remove = (productId: string) => {
     const { count, ids } = { ...context.cartProducts };
 
-    if (!hasProductInCart(productId)) return;
+    if (!hasProduct(productId)) return;
     delete ids[productId];
 
     context.setCartProducts({ count: count - 1, ids });
   };
 
-  const clearCart = () => context.setCartProducts({ count: 0, ids: {} });
+  const clear = () => context.setCartProducts({ count: 0, ids: {} });
 
-  function hasProductInCart(productId: string | number): boolean {
+  function hasProduct(productId: string): boolean {
     return getBoolean(context.cartProducts.ids[productId]);
   }
 
-  function getProducts(): CartProduct[] {
-    const found: CartProduct[] = [];
+  function getProducts(): Product[] {
+    const found: Product[] = [];
 
     products.forEach((p) => {
-      if (hasProductInCart(p._id)) found.push({ ...p, quantity: 1 });
+      if (hasProduct(p._id)) found.push(p);
     });
 
     return found;
   }
 
-  const incrementQuantity = (productId: string | number) => {
-    const updated = cartProducts.map((p) => {
-      if (p._id === productId) p.quantity += 1;
-      return p;
-    });
+  const getProductQuantity = (productId: string): number =>
+    context.cartProducts.ids[productId];
 
-    setCartProducts(updated);
+  const incQuantity = (productId: string) => {
+    const prevQuantity = context.cartProducts.ids[productId];
+
+    const ids = { ...context.cartProducts.ids, [productId]: prevQuantity + 1 };
+    context.setCartProducts({ count: context.cartProducts.count, ids });
   };
 
-  const decrementQuantity = (id: string | number) => {
-    const updated = cartProducts.map((p) => {
-      if (p._id !== id) return p;
+  const decQuantity = (productId: string) => {
+    const prevQuantity = context.cartProducts.ids[productId];
 
-      p.quantity === 1
-        ? toast.info("Delete it if you really wanna remove")
-        : (p.quantity -= 1);
+    if (prevQuantity === 1)
+      return toast.info("Delete it if you really wanna remove");
 
-      return p;
-    });
-
-    setCartProducts(updated);
+    const ids = { ...context.cartProducts.ids, [productId]: prevQuantity - 1 };
+    context.setCartProducts({ count: context.cartProducts.count, ids });
   };
 
   const getGrandTotal = () => {
     const grandTotal = cartProducts.reduce(
-      (total, { price, quantity }) => total + price * quantity,
+      (total, { _id, price }) => total + price * getProductQuantity(_id),
       0
     );
 
@@ -91,16 +84,17 @@ const useCart = () => {
   };
 
   return {
-    add: addToCart,
-    clear: clearCart,
-    decrementQuantity,
+    add,
+    clear,
+    decQuantity,
     count,
     getGrandTotal,
     getProducts,
-    hasProduct: hasProductInCart,
-    incrementQuantity,
+    getProductQuantity,
+    hasProduct,
+    incQuantity,
     products: cartProducts,
-    remove: removeFromCart,
+    remove,
     setProducts: setCartProducts,
   };
 };
