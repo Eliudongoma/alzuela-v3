@@ -5,9 +5,9 @@ import { useProducts } from "../hooks";
 
 function ProductPage() {
   const { productId } = useParams();
-  const { products } = useProducts();
+  const helper = useProducts();
 
-  const product = products.find((p) => p._id === productId);
+  const product = helper.findProduct(productId);
 
   if (!product) return null;
 
