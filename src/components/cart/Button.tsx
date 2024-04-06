@@ -1,4 +1,4 @@
-import { Button, Text, Flex } from "@chakra-ui/react";
+import { Button, Text, Flex, Badge } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 
 import { useCart } from "../../hooks";
@@ -8,14 +8,18 @@ function CartButton({ productId }: { productId: string }) {
 
   if (cart.hasProduct(productId))
     return (
-      <Flex 
-        align={"center"}  
-        cursor={"pointer"}
-        color={"green.400"}
-        justify={"center"} 
-        onClick={() => cart.remove(productId)}>
-        <CheckCircleIcon/>
-        <Text>Remove from Cart</Text>
+      <Flex
+        align="center"
+        color="green.400"
+        cursor="pointer"
+        justify="center"
+        onClick={() => cart.remove(productId)}
+      >
+        <CheckCircleIcon />
+        <Text mx={1}>Remove from Cart</Text>
+        <Badge borderRadius="full" bg="green">
+          {cart.getProductQuantity(productId)}
+        </Badge>
       </Flex>
     );
 
@@ -27,7 +31,8 @@ function CartButton({ productId }: { productId: string }) {
       mx={"auto"}
       w={"80%"}
       fontSize={20}
-      onClick={() => cart.add(productId)}>
+      onClick={() => cart.add(productId)}
+    >
       <Text>Add To Cart</Text>
     </Button>
   );
