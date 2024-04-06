@@ -1,6 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import { toast } from "react-toastify";
-
 import { CartContext } from "../contexts";
 import { figure } from "../utils";
 import { getBoolean } from "../utils/funcs";
@@ -65,10 +63,6 @@ const useCart = () => {
 
   const decQuantity = (productId: string) => {
     const prevQuantity = context.cartProducts.ids[productId];
-
-    if (prevQuantity === 1)
-      return toast.info("Delete it if you really wanna remove");
-
     const ids = { ...context.cartProducts.ids, [productId]: prevQuantity - 1 };
     context.setCartProducts({ count: context.cartProducts.count, ids });
   };

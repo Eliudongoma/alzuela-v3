@@ -1,16 +1,18 @@
-import { Button, Flex, FormControl, FormLabel, Input } from "@chakra-ui/react";
-
+import { Button, Flex, FormControl, FormLabel, Input, useDisclosure   } from "@chakra-ui/react";
 import { useCart } from "../hooks";
+import Delete from "./cart/Delete";
 
 function ProductQuantity({ productId }: { productId: string }) {
   const cart = useCart();
+  const { isOpen,onOpen, onClose } = useDisclosure();
 
   return (
+    <>
     <FormControl>
       <Flex mt={2} align="center">
         <FormLabel>Quantity:</FormLabel>
         <Flex align={"center"}>
-          <Button onClick={() => cart.decQuantity(productId)}>-</Button>
+          <Button onClick={ (cart.getProductQuantity(productId) <= 1) ?  onOpen : () => cart.decQuantity(productId)}>-</Button>
           <Input
             type="number"
             value={cart.getProductQuantity(productId)}
@@ -21,10 +23,12 @@ function ProductQuantity({ productId }: { productId: string }) {
             textAlign={"center"}
             p={1}
           />
-          <Button onClick={() => cart.incQuantity(productId)}>+</Button>
+          <Button onClick={() => cart.incQuantity(productId)}>+</Button>       
         </Flex>
       </Flex>
     </FormControl>
+    <Delete productId={productId} isOpen={isOpen} onClose={onClose}/>    
+   </>
   );
 }
 
