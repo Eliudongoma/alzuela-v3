@@ -54,7 +54,6 @@ const useCart = () => {
     products.forEach((p) => {
       if (hasProductInCart(p._id)) found.push({ ...p, quantity: 1 });
     });
-
     return found;
   }
 
@@ -63,7 +62,6 @@ const useCart = () => {
       if (p._id === productId) p.quantity += 1;
       return p;
     });
-
     setCartProducts(updated);
   };
 
@@ -74,6 +72,9 @@ const useCart = () => {
       p.quantity === 1
         ? toast.info("Delete it if you really wanna remove")
         : (p.quantity -= 1);
+
+      if(p.quantity === 0)
+        removeFromCart(id)
 
       return p;
     });
@@ -86,7 +87,6 @@ const useCart = () => {
       (total, { price, quantity }) => total + price * quantity,
       0
     );
-
     return figure.addComma(figure.roundToTwoDecimalPlaces(grandTotal));
   };
 

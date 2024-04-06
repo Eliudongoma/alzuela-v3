@@ -7,9 +7,12 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useCart } from "../hooks";
+// import { useState } from "react";
+// import { CartProduct } from "../hooks/useCart";
 
 function CartTotal({ ...otherProps }: FlexProps) {
   const cart = useCart();
+  // const [products, setProducts] = useState<CartProduct>();  
   const items = cart.getProducts().length;
   const total = cart.getGrandTotal();
 

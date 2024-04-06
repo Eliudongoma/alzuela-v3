@@ -24,7 +24,7 @@ function CartPage() {
               <CartProduct product={product} key={product._id} />
             ))}
           </Flex>
-          <CartTotal />
+          <CartTotal/>
         </Flex>
       </Box>
     );

@@ -26,13 +26,14 @@ function ProductQuantity({ productId }: { productId: string }) {
 
     cart.incrementQuantity(productId);
     setProduct({ ...product, quantity: product.quantity + 1 });
-  };
+    cart.getGrandTotal();
+  }; 
 
   const handleRemove = () => {
     if (!product) return;
 
     cart.decrementQuantity(productId);
-    if (product.quantity > 1)
+     if (product.quantity > 1)
       setProduct({ ...product, quantity: product.quantity - 1 });
   };
 
@@ -41,7 +42,7 @@ function ProductQuantity({ productId }: { productId: string }) {
       <Flex mt={2} align="center">
         <FormLabel>Quantity:</FormLabel>
         <Flex align={"center"}>
-          <Button onClick={handleRemove}>-</Button>
+          <Button onClick={() => handleRemove}>-</Button>
           <Input
             type="number"
             value={product?.quantity}
@@ -52,7 +53,7 @@ function ProductQuantity({ productId }: { productId: string }) {
             textAlign={"center"}
             p={1}
           />
-          <Button onClick={handleAdd}>+</Button>
+          <Button onClick={ () => handleAdd}>+</Button>
         </Flex>
       </Flex>
     </FormControl>
