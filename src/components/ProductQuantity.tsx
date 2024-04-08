@@ -2,9 +2,13 @@ import { Button, Flex, FormControl, FormLabel, Input, useDisclosure   } from "@c
 import { useCart } from "../hooks";
 import Delete from "./cart/Delete";
 
-function ProductQuantity({ productId }: { productId: string }) {
+interface ProductId {
+  productId: string;
+}
+
+function ProductQuantity({ productId }:ProductId) {
   const cart = useCart();
-  const { isOpen,onOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>

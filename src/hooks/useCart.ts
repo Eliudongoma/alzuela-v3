@@ -63,6 +63,7 @@ const useCart = () => {
 
   const decQuantity = (productId: string) => {
     const prevQuantity = context.cartProducts.ids[productId];
+    
     const ids = { ...context.cartProducts.ids, [productId]: prevQuantity - 1 };
     context.setCartProducts({ count: context.cartProducts.count, ids });
   };

@@ -1,6 +1,5 @@
 import { Button, Text, Icon } from "@chakra-ui/react";
 import { WarningIcon } from "@chakra-ui/icons";
-
 import { Modal } from "../common";
 import { useCart } from "../../hooks";
 
